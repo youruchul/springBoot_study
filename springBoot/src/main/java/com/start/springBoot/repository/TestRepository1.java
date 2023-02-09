@@ -14,4 +14,10 @@ public class TestRepository1 {
     public List<TestDTO> findAll(){
         return sqlSessionTemplate.selectList("test.findAll");
     }
+    public List<TestDTO> findOneById(Integer id){
+        return sqlSessionTemplate.selectList("test.findOneById", id);
+    }
+    public Integer insertOne(TestDTO dto) {
+        return sqlSessionTemplate.insert("test.insertOne", dto);
+    }
 }

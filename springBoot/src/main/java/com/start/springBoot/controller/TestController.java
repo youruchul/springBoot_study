@@ -33,16 +33,18 @@ public class TestController {
         return testService.getAllTest();
     }
     @GetMapping(value = "/{id}")
-    public TestDTO findById(@PathVariable("id") Integer id){
+    public List<TestDTO> findById(@PathVariable("id") Integer id){
         return testService.getOneTest(id);
+//        return testService.getOneTest(id);
     }
 ////    @RequestMapping(value = "/test", method = RequestMethod.POST)
     @PostMapping
-    public ResponseEntity<TestDTO> postTest(
+    public Integer postTest(
             @RequestBody TestDTO dto
     ){
-        TestDTO insertDTO = testService.insertTest(dto);
-        return new ResponseEntity<TestDTO>(insertDTO, HttpStatus.CREATED);
+//        TestDTO insertDTO = testService.insertTest(dto);
+//        return new ResponseEntity<TestDTO>(insertDTO, HttpStatus.CREATED);
+        return testService.insertTest(dto);
     }
     @PostMapping(value = "/init")
     public boolean initTestData(){

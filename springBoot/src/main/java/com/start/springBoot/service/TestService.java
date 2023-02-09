@@ -24,16 +24,16 @@ public class TestService {
         return repository1.findAll();
     }
 
-    public TestDTO getOneTest(Integer id){
-        Optional<TestDTO> findOneById = db.stream().filter(dto -> Objects.equals(dto.getId(), id)).findFirst();
-        return findOneById.orElse(null);
+    public List<TestDTO> getOneTest(Integer id){
+//        Optional<TestDTO> findOneById = db.stream().filter(dto -> Objects.equals(dto.getId(), id)).findFirst();
+//        return findOneById.orElse(null);
+        return repository1.findOneById(id);
     }
-    public TestDTO insertTest(TestDTO dto){
-        int id = db.size() + 1;
-        dto.setId(id);
-        db.add(dto);
-
-        return dto;
+    public Integer insertTest(TestDTO dto){
+//        int id = db.size() + 1;
+//        dto.setId(id);
+//        db.add(dto);
+        return repository1.insertOne(dto);
     }
 
     public boolean initData() {
